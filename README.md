@@ -44,3 +44,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## Comandos
+
+``npm i --save styled-components react-router-dom``
+
+``npx eslint --fix.``
+
+## Error
+
+`` `"styled-components";␍` with `'styled-components'  ``
+
+Enfrentei o mesmo problema. Particularmente, não gosto de um parêntesis adicional dentro dos meus props. Então desabilitar a regra deve resolver seu problema.
+
+Adicione isto ao seu .eslintrc.jsoninterior rules:
+
+`` "react/jsx-wrap-multilines": "off" ``
