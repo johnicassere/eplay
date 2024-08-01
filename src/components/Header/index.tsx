@@ -6,17 +6,17 @@ import carrinho from '../../assets/images/carrinho.svg'
 const Header = () => (
     <HeaderBar>
         <div>
-        <img src={logo} alt="EPLAY" />
+        <Link to="/"><img src={logo} alt="EPLAY" /></Link>
         <nav>
             <Links>
                 <LinkItem>
-                <Link to="/categorias">Categorias</Link>
-                </LinkItem>
-                <LinkItem>
-                <Link to="/categorias">Noividades</Link>
-                </LinkItem>
-                <LinkItem>
-                <Link to="/categorias">Promoçoes</Link>
+                    <Link to="/categorias">Categorias</Link>
+                    </LinkItem>
+                    <LinkItem>
+                    <Link to="/categorias">Noividades</Link>
+                    </LinkItem>
+                    <LinkItem>
+                    <Link to="/categorias">Promoçoes</Link>
                 </LinkItem>
             </Links>
         </nav>
