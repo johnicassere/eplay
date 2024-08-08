@@ -9,13 +9,18 @@ border-radius: 8px;
 padding: 8px;
 position: relative;
 
+img{
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
 ${TagContainer}{
     margin-right: 8px;
 }
 
-img{
-    border-radius: 4px;
-}
 `
 
 export const Titulo = styled.h3`

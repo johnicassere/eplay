@@ -61,3 +61,7 @@ Enfrentei o mesmo problema. Particularmente, não gosto de um parêntesis adicio
 Adicione isto ao seu .eslintrc.jsoninterior rules:
 
 `` "react/jsx-wrap-multilines": "off" ``
+
+vá para as configurações do vscode
+
+`(ctrl + ,) (cmd + ,)` procure `single quote` e desative-o.
