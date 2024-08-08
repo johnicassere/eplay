@@ -81,6 +81,9 @@ header{
     }
 }
 
+> img {
+    width: 100%;
+}
   img, iframe {
     display: block;
     max-width: 100%;

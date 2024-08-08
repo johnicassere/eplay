@@ -3,7 +3,7 @@ import { Imagem, Titulo, Precos } from './styles'
 import Tag from '../Tag/index'
 import Button from '../Button'
 import { formataPreco } from '../ProductsList'
-import { Game } from '../../pages/Home'
+// import { Game } from '../../pages/Home'
 
 
 const Banner = () => {
@@ -34,7 +34,10 @@ const [game, setGame] = useState()
                 por apenas {formataPreco(game.prices.current)}
             </Precos>
             </div>
-            <Button type='link' to='/produto' title='Clique aqui para aproveitar está oferta'>
+            <Button 
+            type='link' 
+            to={`/product/${game.id}`} 
+            title='Clique aqui para aproveitar está oferta'>
             Aproveitar
         </Button>
         </div>
