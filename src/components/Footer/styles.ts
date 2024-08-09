@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
+import { HashLink } from 'react-router-hash-link'
 
 
 export const Container = styled.div`
@@ -18,10 +19,10 @@ export const Links = styled.ul`
 display: flex;
 margin-top: 16px;
 `
-export const Link = styled.a`
+export const Link = styled(HashLink)`
 color: ${cores.cinzaClaro};
 margin-right: 8px;
-cursor: pointer;
+
 `
 export const FooterSection = styled.div`
 margin-bottom: 64px;

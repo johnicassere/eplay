@@ -52,6 +52,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ``npx eslint --fix.``
 
+``npm install --save @reduxjs/toolkit react-redux``
+
+``npm install --save react-router-hash-link``
+
+``npm install --save-dev @types/react-router-hash-link``
+
 ## Error
 
 `` `"styled-components";␍` with `'styled-components'  ``

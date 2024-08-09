@@ -2,48 +2,36 @@
 import { useEffect, useState } from "react"
 import { Game } from "../Home"
 import ProductsList from "../../components/ProductsList"
+import { 
+    useGetActionGameQuery,  
+    useGetFightGameQuery, 
+    useGetRpgGameQuery, 
+    useGetSimulationGameQuery, 
+    useGetSportGamesQuery 
+} from '../../services/api'
 
 
 
 const Categories = () => {
-    const [gameAcao, setGameAcao] = useState<Game[]>([])
-    const [gameEsportes, setGameEsportes] = useState<Game[]>([])
-    const [gameSimulacao, setGameSimulacao] = useState<Game[]>([])
-    const [gameLuta, setGameLuta] = useState<Game[]>([])
-    const [gameRPG, setGameRPG] = useState<Game[]>([])
+    const { data: actionGames } = useGetActionGameQuery()
+    const { data: figthGames} = useGetFightGameQuery()
+    const { data: rpgGames } = useGetRpgGameQuery()
+    const { data: simulationGames } = useGetSimulationGameQuery()
+    const { data: sportGames } = useGetSportGamesQuery()
 
-    useEffect(() => {
-        fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
-        .then((res) => res.json())
-        .then((res) => setGameAcao(res))
+    if( actionGames && figthGames && rpgGames && simulationGames && sportGames){
+        return (
+            <>
+              <ProductsList games={actionGames} title='Ação' background='black' id="action"/>
+              <ProductsList games={sportGames} title='Esportes' background='gray' id="sports"/>
+              <ProductsList games={simulationGames} title='Simulação' background='black' id="simulation"/>
+              <ProductsList games={figthGames} title='Luta' background='gray' id="fight"/>
+              <ProductsList games={rpgGames} title='RPG' background='black' id="rpg"/>
+              </>
+        )
 
-        fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
-        .then((res) => res.json())
-        .then((res) => setGameEsportes(res))
-
-        fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
-        .then((res) => res.json())
-        .then((res) => setGameSimulacao(res))
-
-        fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
-        .then((res) => res.json())
-        .then((res) => setGameLuta(res))
-
-        fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
-        .then((res) => res.json())
-        .then((res) => setGameRPG(res))
-
-
-    },[])
-    return (
-        <>
-          <ProductsList games={gameAcao} title='Ação' background='black'/>
-          <ProductsList games={gameEsportes} title='Esportes' background='gray'/>
-          <ProductsList games={gameSimulacao} title='Simulação' background='black'/>
-          <ProductsList games={gameLuta} title='Luta' background='gray'/>
-          <ProductsList games={gameRPG} title='RPG' background='black'/>
-          </>
-    )
+    }
+    return <h4>Carregando...</h4>
 }
 
 export default Categories

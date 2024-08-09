@@ -4,6 +4,8 @@ import { cores } from "../../styles";
 
 export const Items = styled.ul`
 display: flex;
+gap: 16px;
+flex-wrap: wrap;
 `
 export const Action = styled.div`
 position: absolute;
@@ -20,7 +22,6 @@ transition: opacity .5s ease;
 `
 
 export const Item = styled.ul`
-    margin-right: 16px;
     position: relative;
 
 > img{

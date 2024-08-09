@@ -1,31 +1,43 @@
 import { Link } from "react-router-dom"
-import { HeaderBar, Links, LinkItem, LinkCart } from "./srtyles"
+import { HeaderBar, Links, LinkItem, CartButton } from "./srtyles"
 import logo from '../../assets/images/logo.svg'
 import carrinho from '../../assets/images/carrinho.svg'
+import { open } from '../../store/reducers/cart'
+import { useDispatch, useSelector } from "react-redux"
+import { RootReducer } from "../../store"
 
-const Header = () => (
-    <HeaderBar>
-        <div>
-        <Link to="/"><img src={logo} alt="EPLAY" /></Link>
-        <nav>
-            <Links>
-                <LinkItem>
-                    <Link to="/categorias">Categorias</Link>
-                    </LinkItem>
+const Header = () => {
+    const dispatch = useDispatch()
+    const { items } = useSelector((state: RootReducer) => state.cart )
+
+    const openCart = () => {
+        dispatch(open())
+    }
+    
+    return (
+        <HeaderBar>
+            <div>
+            <Link to="/"><img src={logo} alt="EPLAY" /></Link>
+            <nav>
+                <Links>
                     <LinkItem>
-                    <Link to="/categorias">Noividades</Link>
+                        <Link to="/categorias">Categorias</Link>
+                        </LinkItem>
+                        <LinkItem>
+                        <Link to="/">Noividades</Link>
+                        </LinkItem>
+                        <LinkItem>
+                        <Link to="/">Promoções</Link>
                     </LinkItem>
-                    <LinkItem>
-                    <Link to="/categorias">Promoçoes</Link>
-                </LinkItem>
-            </Links>
-        </nav>
-        </div>
-        <LinkCart href="#">
-            0 - produto(s)
-            <img src={carrinho} alt="Carrinho" /> 
-        </LinkCart>
-    </HeaderBar>
-)
+                </Links>
+            </nav>
+            </div>
+            <CartButton onClick={openCart}>
+                {items.length} - produto(s)
+                <img src={carrinho} alt="Carrinho" /> 
+            </CartButton>
+        </HeaderBar>
+    )
+}
 
 export default Header

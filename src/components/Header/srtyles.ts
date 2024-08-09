@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { breakpoints, cores } from "../../styles"
 
 
 export const HeaderBar = styled.header`
@@ -8,6 +8,7 @@ padding: 24px;
 border-radius: 16px;
 margin-bottom: 80px;
 display: flex;
+align-items: center;
 justify-content: space-between;
 a{
     color: ${cores.branca};
@@ -16,6 +17,10 @@ a{
 div{
     display: flex;
     align-items: center;
+}
+
+@media(max-width: ${breakpoints.tablet}){
+    display: none;
 }
 `
 
@@ -30,7 +35,7 @@ a:hover{
     font-size: 17px;
 }
 `
-export const LinkCart = styled.a`
+export const CartButton = styled.a`
     display: flex;
     
     img{
