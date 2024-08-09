@@ -58,6 +58,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ``npm install --save-dev @types/react-router-hash-link``
 
+``npm install --save yup formik``
+
 ## Error
 
 `` `"styled-components";␍` with `'styled-components'  ``

@@ -4,6 +4,5 @@
   "singleQuote": false,
   "printWidth": 80,
   "tabWidth": 3,
-  "endOfLine": "auto",
-  "prettier/prettier": ["error", { "endOfLine": "off" }]
+  "prettier/prettier": ["error", { "endOfLine": "auto" }]
 }
