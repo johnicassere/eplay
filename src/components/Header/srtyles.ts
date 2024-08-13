@@ -52,6 +52,7 @@ export const NavMobile = styled.nav`
 
     &.is-open {
         display: block;
+        
     }
 
 `

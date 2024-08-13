@@ -1,16 +1,26 @@
 import { useState } from "react"
+import * as Yup from 'yup'
+import { useFormik } from "formik"
+
 import Button from "../../components/Button"
 import Card from "../../components/Card"
-import { Row, InputGroup, TabButton } from './styles'
+
 import boleto from '../../assets/images/boleto.png'
 import cartao from '../../assets/images/cartao.png'
-import { useFormik } from "formik"
-import * as Yup from 'yup'
+
+import { usePurchaseMutation } from "../../services/api"
+
+import { Row, InputGroup, TabButton } from './styles'
+
+
+const currentYear = new Date().getFullYear()
+const currentMoth = new Date().getMonth()
 
 
 const Checkout = () => {
-
     const [ payWithCard, setpayWithCard] = useState(false)
+    const [ purchase, { data, isSuccess }] = usePurchaseMutation()
+
     const form = useFormik({
         initialValues: {
             fullName: '',
@@ -46,7 +56,40 @@ const Checkout = () => {
 
         }),
         onSubmit: (values) => {
-            console.log(values);
+            purchase({
+                billing: {
+                    document: values.cpf,
+                    email: values.email,
+                    name: values.fullName
+                },
+                delivery: {
+                    email: values.deliveryEmail
+                },
+                payment:{
+                    installments: 1,
+                    card: {
+                        active: payWithCard,
+                        code: Number(values.cardCode),
+                        name: values.cardDisplayName,
+                        number: values.cardNumber,
+                        owner: {
+                            document: values.cpfCardOwner,
+                            name: values.cardOwner
+                        },
+                        expires: {
+                            month: currentMoth,
+                            year: currentYear
+                        }
+
+                    }
+                },
+                products:[
+                    {
+                        id: 1,
+                        price: 10
+                    }
+                ]
+            })
         },
             
     })
@@ -60,7 +103,35 @@ const Checkout = () => {
     }
 
     return (
-        <form onSubmit={form.handleSubmit} className="container">
+       <div className="container">
+        {isSuccess ? (
+              <Card title="Muito obrigado">
+              <>
+                  <p>
+                  É com satisfação que informamos que recebemos seu pedido com sucesso!<br/>
+                  Abaixo estão os detalhes da sua compra:<br/>
+                  Número do pedido: {data.orderId} <br/>
+                  Forma de pagamento: {payWithCard ? 'Cartão de crédito' : 'Boleto bancário'}
+                  </p>
+                  <p className="margin-top">
+                  Caso tenha optado pelo pagamento via boleto bancário, lembre-se de que a confirmação pode levar até 3 dias úteis. 
+                  Após a aprovação do pagamento, enviaremos um e-mail contendo o código de ativação do jogo.
+                  </p>
+                  <p className="margin-top">
+                  Se você optou pelo pagamento com cartão de crédito, a liberação do código de ativação ocorrerá após a 
+                  aprovação da transação pela operadora do cartão. Você receberá o código no e-mail cadastrado em nossa loja. 
+                  </p>
+                  <p className="margin-top">
+                  Pedimos que verifique sua caixa de entrada e a pasta de spam para garantir que receba nossa comunicação.
+                  Caso tenha alguma dúvida ou necessite de mais informações, por favor, entre em contato conosco através dos nossos canais de atendimento ao cliente.
+                  </p>
+                  <p className="margin-top">
+                  Agradecemos por escolher a EPLAY e esperamos que desfrute do seu jogo!
+                  </p>
+              </>
+          </Card>
+        ): (
+            <form onSubmit={form.handleSubmit} >
             <Card title="Dados de cobrança">
                 <>
                 <Row>
@@ -189,7 +260,12 @@ const Checkout = () => {
                 <Button type="button" title="Clique aqui para finalizar a compras">
                     Finalizar compra
                 </Button>
-        </form>
+            </form>
+
+        )}
+        
+      
+       </div>
     )
 }
 

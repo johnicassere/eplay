@@ -1,13 +1,11 @@
-import Button from "../Button"
-
-import startwars from '../../assets/images/star_wars.png'
-
-import { Overlay, CartContainer,SideBar, Prices, Quantity, CartItem } from './styles'
-import Tag from "../Tag"
 import { useDispatch, useSelector } from "react-redux"
+import Button from "../Button"
+import Tag from "../Tag"
+
+import { formataPreco } from "../ProductsList"
 import { RootReducer } from "../../store"
 import { close, remove } from "../../store/reducers/cart"
-import { formataPreco } from "../ProductsList"
+import { Overlay, CartContainer,SideBar, Prices, Quantity, CartItem } from './styles'
 
 
 

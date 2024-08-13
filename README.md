@@ -60,6 +60,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ``npm install --save yup formik``
 
+``npx eslint .``
+
 ## Error
 
 `` `"styled-components";␍` with `'styled-components'  ``

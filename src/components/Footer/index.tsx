@@ -9,18 +9,28 @@ const Footer = () => (
         <FooterSection>
             <SectionTitle>Categorias</SectionTitle>
             <Links>
-                <li><Link to='/categorias#rpg'>RGP</Link></li>
-                <li><Link to='/categorias#action'>Ação</Link></li>
-                <li><Link to='/categorias#sports'>Esportes</Link></li>
-                <li><Link to='/categorias#simulation'>Simulação</Link></li>
-                <li><Link to="/categorias#fight">Luta</Link></li>
+                <li>
+                    <Link title='Clique para acessar jogos de RPG' to='/categorias#rpg'>RGP</Link>
+                </li>
+                <li>
+                    <Link title='Clique para acessar jogos de Ação' to='/categorias#action'>Ação</Link>
+                </li>
+                <li>
+                    <Link title='Clique para acessar jogos de Esportes' to='/categorias#sports'>Esportes</Link>
+                </li>
+                <li>
+                    <Link title='Clique para acessar jogos de Simulação' to='/categorias#simulation'>Simulação</Link>
+                </li>
+                <li>
+                    <Link title='Clique para acessar jogos de Luta' to="/categorias#fight">Luta</Link>
+                </li>
             </Links>
         </FooterSection>
         <FooterSection>
             <SectionTitle>Acesso rápido</SectionTitle>
             <Links>
-            <li><Link to='/#on-sale'>Promoções</Link></li>
-            <li><Link to='/#coming-soon'>Em breve</Link></li>
+            <li><Link title='Clique para acessar a seção de promoções' to='/#on-sale'>Promoções</Link></li>
+            <li><Link title='Clique para acessar a seção em breve' to='/#coming-soon'>Em breve</Link></li>
             </Links>
         </FooterSection>
         <p>

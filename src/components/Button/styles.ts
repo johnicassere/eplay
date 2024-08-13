@@ -12,6 +12,7 @@ font-size: 16px;
 font-weight: bold;
 border-radius: 8px;
 padding: 8px 16px;
+cursor: pointer;
 `
 
 export const ButtonLink = styled(Link)`

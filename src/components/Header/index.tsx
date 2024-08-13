@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { HashLink } from "react-router-hash-link"
 import { HeaderBar, Links, LinkItem, CartButton, Hamburguer, HeaderRow, NavMobile } from "./srtyles"
 import logo from '../../assets/images/logo.svg'
 import carrinho from '../../assets/images/carrinho.svg'
@@ -29,13 +30,13 @@ const Header = () => {
             <nav>
                 <Links>
                     <LinkItem>
-                        <Link to="/categories">Categorias</Link>
+                        <HashLink title="Clique para acessar categorias" to="/categories">Categorias</HashLink>
                         </LinkItem>
                         <LinkItem>
-                        <Link to="/">Noividades</Link>
+                        <HashLink title="Clique para acessar em breve" to="/#coming-soon">Em breve</HashLink>
                         </LinkItem>
                         <LinkItem>
-                        <Link to="/">Promoções</Link>
+                        <HashLink title="Clique para acessar promoções" to="/#on-sale">Promoções</HashLink>
                     </LinkItem>
                 </Links>
             </nav>
@@ -49,13 +50,13 @@ const Header = () => {
            <NavMobile className={isMenuOpen ? 'is-open' : ''}>
                 <Links>
                     <LinkItem>
-                        <Link to="/categories">Categorias</Link>
-                        </LinkItem>
-                        <LinkItem>
-                        <Link to="/">Noividades</Link>
-                        </LinkItem>
-                        <LinkItem>
-                        <Link to="/">Promoções</Link>
+                        <HashLink onClick={() => setIsMenuOpen(false)} title="Clique para acessar categorias" to="/categories">Categorias</HashLink>
+                    </LinkItem>
+                    <LinkItem>
+                            <HashLink onClick={() => setIsMenuOpen(false)} title="Clique para acessar em breve" to="/#coming-soon">Em breve</HashLink>
+                    </LinkItem>
+                    <LinkItem>
+                        <HashLink onClick={() => setIsMenuOpen(false)} title="Clique para acessar promoções" to="/#on-sale">Promoções</HashLink>
                     </LinkItem>
                 </Links>
             </NavMobile>

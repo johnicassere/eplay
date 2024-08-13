@@ -12,6 +12,7 @@ position: relative;
 text-decoration: none;
 color: ${cores.branca};
 display: block;
+height: 100%;
 
 img{
     display: block;

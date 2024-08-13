@@ -1,28 +1,12 @@
 import { useState } from "react"
 import Section from "../section"
 import { GallaryItem} from '../../pages/Home'
-import { Item, Items, Action, Modal, ModalContent } from './styles'
-import spiderman from '../../assets/images/banner-homem-aranha.png'
-import hogwarts from '../../assets/images/fundo_hogwarts.png'
+
 import play from '../../assets/images/play.png'
 import zoom from '../../assets/images/zoom.png'
 import fechar from '../../assets/images/fechar.png'
+import { Item, Items, Action, Modal, ModalContent } from './styles'
 
-
-const mock: GallaryItem[]  = [
-    {
-        type: 'image',
-        url: spiderman
-    },
-    {
-        type: 'image',
-        url: hogwarts
-    },
-    {
-        type: 'video',
-        url: 'https://www.youtube.com/embed/uHGShqcAHlQ?si=DrrfJa8CkejEPESA'
-    }
-]
 
 type Props = {
     defaultCover: string
