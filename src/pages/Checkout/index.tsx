@@ -5,12 +5,12 @@ import { useFormik } from "formik"
 import Button from "../../components/Button"
 import Card from "../../components/Card"
 
-import boleto from '../../assets/images/boleto.png'
-import cartao from '../../assets/images/cartao.png'
+import barCode from '../../assets/images/boleto.png'
+import credirCard from '../../assets/images/cartao.png'
 
 import { usePurchaseMutation } from "../../services/api"
 
-import { Row, InputGroup, TabButton } from './styles'
+import * as S from './styles'
 
 
 const currentYear = new Date().getFullYear()
@@ -134,106 +134,106 @@ const Checkout = () => {
             <form onSubmit={form.handleSubmit} >
             <Card title="Dados de cobrança">
                 <>
-                <Row>
-                    <InputGroup>
+                <S.Row>
+                    <S.InputGroup>
                         <label htmlFor="fullName">Nome Completo</label>
                         <input id="fullName" type="text" name="fullName" value={form.values.fullName} onChange={form.handleChange} onBlur={form.handleBlur}/>
                         <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
-                    </InputGroup>
-                    <InputGroup>
+                    </S.InputGroup>
+                    <S.InputGroup>
                         <label htmlFor="email">E-mail</label>
                         <input id= "email" type="email" name="email" value={form.values.email} onChange={form.handleChange} onBlur={form.handleBlur}/>
                         <small>{getErrorMessage('email', form.errors.fullName)}</small>
-                    </InputGroup>
-                    <InputGroup>
+                    </S.InputGroup>
+                    <S.InputGroup>
                         <label htmlFor="cpf">CPF</label>
                         <input id="cpf" type="text" name="cpf" value={form.values.cpf} onChange={form.handleChange} onBlur={form.handleBlur}/>
                         <small>{getErrorMessage('cpf', form.errors.fullName)}</small>
-                    </InputGroup>
-                </Row>
+                    </S.InputGroup>
+                </S.Row>
                 <h3 className="margin-top">Dados de entrega - conteudo digital</h3>
-                <Row>
-                    <InputGroup>
+                <S.Row>
+                    <S.InputGroup>
                         <label htmlFor="deliveryEmail">E-mail</label>
                         <input id="deliveryEmail" type="email" name="deliveryEmail" value={form.values.deliveryEmail} onChange={form.handleChange} onBlur={form.handleBlur}/>
                         <small>{getErrorMessage('deliveryEmail', form.errors.fullName)}</small>
-                    </InputGroup>
-                    <InputGroup>
+                    </S.InputGroup>
+                    <S.InputGroup>
                         <label htmlFor="confirmDeliveryEmail">Confirme o e-mail</label>
                         <input id="confirmDeliveryEmail" type="email" name="confirmDeliveryEmail" value={form.values.confirmDeliveryEmail} onChange={form.handleChange} onBlur={form.handleBlur}/>
                         <small>{getErrorMessage('confirmDeliveryEmail', form.errors.fullName)}</small>
-                    </InputGroup>
-                </Row>
+                    </S.InputGroup>
+                </S.Row>
                 </>
                 </Card>
                 <Card title="Pagamento">
                     <>
-                        <TabButton isActive={!payWithCard} onClick={() => setpayWithCard(false)}>
-                            <img src={boleto} alt="Boleto" />
+                        <S.TabButton isActive={!payWithCard} onClick={() => setpayWithCard(false)}>
+                            <img src={barCode} alt="Boleto" />
                             Boleto bancário
-                        </TabButton>
-                        <TabButton isActive={payWithCard} onClick={() => setpayWithCard(true)}>
-                            <img src={cartao} alt="Cartão de crédito" />
+                        </S.TabButton>
+                        <S.TabButton isActive={payWithCard} onClick={() => setpayWithCard(true)}>
+                            <img src={credirCard} alt="Cartão de crédito" />
                             Cartão de crédito
-                        </TabButton>
+                        </S.TabButton>
                         <div className="margin-top">
                         {payWithCard ? (
                             <>
-                                <Row>
-                                    <InputGroup>
+                                <S.Row>
+                                    <S.InputGroup>
                                         <label htmlFor="cardOwner">
                                             Nome do titular do cartão
                                         </label>
                                         <input id="cardOwner" type="text" name="cardOwner" value={form.values.cardOwner} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('cardOwner', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                    <InputGroup>
+                                    </S.InputGroup>
+                                    <S.InputGroup>
                                         <label htmlFor="cpfCardOwner">
                                             CPF do titular do cartão
                                         </label>
                                         <input id="cpfCardOwner" type="text" name="cpfCardOwner" value={form.values.cpfCardOwner} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('cpfCardOwner', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                </Row>
-                                <Row marginTop='24px'>
-                                    <InputGroup>
+                                    </S.InputGroup>
+                                </S.Row>
+                                <S.Row marginTop='24px'>
+                                    <S.InputGroup>
                                         <label htmlFor="cardDisplayName">
                                             Nome no cartão
                                         </label>
                                         <input id="cardDisplayName" type="text" name="cardDisplayName" value={form.values.cardDisplayName} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('cardDisplayName', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                    <InputGroup>
+                                    </S.InputGroup>
+                                    <S.InputGroup>
                                         <label htmlFor="cardNumber">
                                             Número do cartão
                                         </label>
                                         <input id="cardNumber" type="text" name="cardNumber" value={form.values.cardNumber} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('cardNumber', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                    <InputGroup maxWidth='123px'>
+                                    </S.InputGroup>
+                                    <S.InputGroup maxWidth='123px'>
                                         <label htmlFor="expiresMonth">
                                             Mês do vencimento
                                         </label>
                                         <input id="expiresMonth" type="text" name="expiresMonth" value={form.values.expiresMonth} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('expiresMonth', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                    <InputGroup maxWidth='123px'>
+                                    </S.InputGroup>
+                                    <S.InputGroup maxWidth='123px'>
                                         <label htmlFor="expiresYear">
                                             Ano do vencimento
                                         </label>
                                         <input id="expiresYear" type="text" name="expiresYear" value={form.values.expiresYear} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('expiresYear', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                    <InputGroup maxWidth='48px'>
+                                    </S.InputGroup>
+                                    <S.InputGroup maxWidth='48px'>
                                         <label htmlFor="cardCode">
                                             CVV
                                         </label>
                                         <input id="cardCode" type="text" name="cardCode" value={form.values.cardCode} onChange={form.handleChange} onBlur={form.handleBlur}/>
                                         <small>{getErrorMessage('cardCode', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                </Row>
-                                <Row marginTop='24px'>
-                                    <InputGroup maxWidth='150px'>
+                                    </S.InputGroup>
+                                </S.Row>
+                                <S.Row marginTop='24px'>
+                                    <S.InputGroup maxWidth='150px'>
                                         <label htmlFor="installments">Parcelamento</label>
                                         <select name="installments" id="installments" value={form.values.installments} onChange={form.handleChange} onBlur={form.handleBlur}>
                                             <option value="">1x de R$ 200,00</option>
@@ -241,8 +241,8 @@ const Checkout = () => {
                                             <option value="">3x de R$ 200,00</option>
                                         </select>
                                         <small>{getErrorMessage('installments', form.errors.fullName)}</small>
-                                    </InputGroup>
-                                </Row>
+                                    </S.InputGroup>
+                                </S.Row>
                             </>
                         ) : (
                             <p>

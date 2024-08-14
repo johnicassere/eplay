@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { breakpoints, cores } from "../../styles"
+import { breakpoints, colors } from "../../styles"
 
 
 export const Links = styled.ul`
@@ -13,14 +13,14 @@ margin-left: 40px;
 `
 
 export const HeaderBar = styled.header`
-background-color: ${cores.cinza};
+background-color: ${colors.gray};
 padding: 24px;
 border-radius: 16px;
 margin-bottom: 80px;
 
 
 a{
-    color: ${cores.branca};
+    color: ${colors.white};
     font-weight: bold;
 }
 
@@ -95,7 +95,7 @@ span{
     height: 2px;
     width: 100%;
     display: block;
-    background-color: ${cores.branca};
+    background-color: ${colors.white};
     margin-bottom: 4px;
 }
 
