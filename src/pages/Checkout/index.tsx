@@ -297,7 +297,7 @@ const Checkout = () => {
                                         value={form.values.cpfCardOwner} 
                                         onChange={form.handleChange} 
                                         onBlur={form.handleBlur}
-                                        className={checkIputHasError('cpfOwner') ? 'error' : ''}
+                                        className={checkIputHasError('cpfCardOwner') ? 'error' : ''}
                                         mask="999.999.999-99"
                                         />
                                         
