@@ -33,6 +33,11 @@ label{
     font-size: 14px;
     margin-bottom: 8px;
     display: block;
+
+    @media (max-width: ${breakpoints.tablet}){
+        margin-top: 16px;
+
+    }
 }
 
 input, select {
@@ -46,9 +51,10 @@ input, select {
         border: 1px solid red;
     }
 
-    @media (max-width: ${breakpoints.tablet}){
+    /* @media (max-width: ${breakpoints.tablet}){
         margin-top: 16px;
-    }
+
+    } */
 }
 `
 export const TabButton = styled.button<TabButtonProps>`
