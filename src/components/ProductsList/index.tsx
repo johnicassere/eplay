@@ -1,4 +1,4 @@
-import { Game } from "../../pages/Home"
+import Loader from "../Loader"
 import { parseToBrl } from '../../utils'
 import Product from "../Product"
 
@@ -8,12 +8,13 @@ import * as S from "./styles"
 export type Props = {
     title: string
     background: 'gray' | 'black'
-    games: Game[]
+    games?: Game[]
     id?: string
+    isLoading: boolean
 }
 
 
-const ProductsList = ({ title, background, games, id }: Props) => {
+const ProductsList = ({ title, background, games, id, isLoading }: Props) => {
 
     const getGamesTags = (game: Game) => {
         const tags = []
@@ -31,13 +32,17 @@ const ProductsList = ({ title, background, games, id }: Props) => {
         return tags
     }
 
+    if(isLoading){
+        return <Loader/>
+    }
+
     return (
 
         <S.Container id={id} background={background}>
             <div className="container">
             <h2>{title}</h2>
             <S.List>
-                {games.map((game) =>(
+                {games && games.map((game) =>(
                     <li key={game.id}>
                         <Product
                             id={game.id} 

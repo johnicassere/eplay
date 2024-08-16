@@ -62,6 +62,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ``npx eslint .``
 
+``npm i --save react-spinners``
+
+``npm i --save react-input-mask``
+
+``npm i --save-dev @types/react-input-mask``
+
 ## Error
 
 `` `"styled-components";␍` with `'styled-components'  ``

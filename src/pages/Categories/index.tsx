@@ -10,25 +10,56 @@ import {
 
 
 const Categories = () => {
-    const { data: actionGames } = useGetActionGameQuery()
-    const { data: figthGames} = useGetFightGameQuery()
-    const { data: rpgGames } = useGetRpgGameQuery()
-    const { data: simulationGames } = useGetSimulationGameQuery()
-    const { data: sportGames } = useGetSportGamesQuery()
+    const { data: actionGames, isLoading: isLoadingAction } = useGetActionGameQuery()
+    const { data: figthGames, isLoading: isLoadingFight} = useGetFightGameQuery()
+    const { data: rpgGames, isLoading: isLoadingRpg } = useGetRpgGameQuery()
+    const { data: simulationGames, isLoading: isLoadingSimulation } = useGetSimulationGameQuery()
+    const { data: sportGames, isLoading: isLoadingSports } = useGetSportGamesQuery()
 
-    if( actionGames && figthGames && rpgGames && simulationGames && sportGames){
         return (
             <>
-              <ProductsList games={actionGames} title='Ação' background='black' id="action"/>
-              <ProductsList games={sportGames} title='Esportes' background='gray' id="sports"/>
-              <ProductsList games={simulationGames} title='Simulação' background='black' id="simulation"/>
-              <ProductsList games={figthGames} title='Luta' background='gray' id="fight"/>
-              <ProductsList games={rpgGames} title='RPG' background='black' id="rpg"/>
+              <ProductsList 
+              games={actionGames} 
+              title='Ação' 
+              background='black' 
+              id="action"
+              isLoading={isLoadingAction}
+              />
+
+              <ProductsList 
+              games={sportGames} 
+              title='Esportes' 
+              background='gray' 
+              id="sports"
+              isLoading={isLoadingSports}
+              />
+
+              <ProductsList 
+              games={simulationGames} 
+              title='Simulação' 
+              background='black' 
+              id="simulation"
+              isLoading={isLoadingSimulation}
+              />
+
+              <ProductsList 
+              games={figthGames} 
+              title='Luta' 
+              background='gray' 
+              id="fight"
+              isLoading={isLoadingFight}
+              />
+
+              <ProductsList 
+              games={rpgGames} 
+              title='RPG' 
+              background='black' 
+              id="rpg"
+              isLoading={isLoadingRpg}
+              />
               </>
         )
 
     }
-    return <h4>Carregando...</h4>
-}
 
 export default Categories
